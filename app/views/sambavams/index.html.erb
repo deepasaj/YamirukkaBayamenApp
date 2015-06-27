@@ -3,6 +3,7 @@
 
 <script type="text/javascript">
     var map = L.map('map').setView([13.0827, 80.2707], 11);
+    var colors = {"high": "#f03", "medium": "#FFA500"};
     var locations = [];
     var accessToken = 'pk.eyJ1IjoicmFkaGlrYWEiLCJhIjoiZTlmNGRiZjliNWNkNDEzYzcwYTMwZWUyYjY2ZjlhZTAifQ.Gh1l78GFd3zmosk4YNu4cw';
     var mapId = 'radhikaa.3f07510a';
@@ -11,14 +12,20 @@
     }).addTo(map);
     $.get('/plot', function(data){
         $.each(data["documents"], function(i,location) {
-            locations[i] = [location["lat"],location["long"]];
+            locations[i] = [location["lat"],location["long"],location["occurences"]];
         });
         $.each(locations, function(i,location) {
+            var color = "";
+            if (parseInt(location[2]) < 10) {
+                color = colors.medium
+            } else {
+                color = colors.high
+            }
             L.circle([parseFloat(location[0]), parseFloat(location[1])], 500, {
                 color: 'red',
-                fillColor: '#f03',
-                fillOpacity: 0.5
-            }).addTo(map);
+                fillColor: color,
+                fillOpacity: 0.8
+            }).addTo(map).bindPopup("Occurences : "+location[2]).openPopup();
         });
     });
 </script>
