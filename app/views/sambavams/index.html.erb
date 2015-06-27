@@ -1,0 +1,11 @@
+<h2>Spots marked are Accident prone areas with frequency marked</h2>
+<div id="map"></div>
+
+<script type="text/javascript">
+    var map = L.map('map').setView([51.505, -0.09], 13);
+    var accessToken = 'pk.eyJ1IjoicmFkaGlrYWEiLCJhIjoiZTlmNGRiZjliNWNkNDEzYzcwYTMwZWUyYjY2ZjlhZTAifQ.Gh1l78GFd3zmosk4YNu4cw';
+    var mapId = 'radhikaa.3f07510a';
+    L.tileLayer('https://api.tiles.mapbox.com/v4/'+mapId+'/{z}/{x}/{y}.png?access_token='+accessToken, {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    }).addTo(map);
+</script>
