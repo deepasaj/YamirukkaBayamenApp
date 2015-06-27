@@ -1,4 +1,3 @@
-<h2>Spots marked are Accident prone areas with frequency marked</h2>
 <div id="map"></div>
 
 <script type="text/javascript">
@@ -8,7 +7,8 @@
     var accessToken = 'pk.eyJ1IjoicmFkaGlrYWEiLCJhIjoiZTlmNGRiZjliNWNkNDEzYzcwYTMwZWUyYjY2ZjlhZTAifQ.Gh1l78GFd3zmosk4YNu4cw';
     var mapId = 'radhikaa.3f07510a';
     L.tileLayer('https://api.tiles.mapbox.com/v4/'+mapId+'/{z}/{x}/{y}.png?access_token='+accessToken, {
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        attribution: '',
+        center: [13.08, 80.27]
     }).addTo(map);
     $.get('/plot', function(data){
         $.each(data["documents"], function(i,location) {
@@ -27,5 +27,84 @@
                 fillOpacity: 0.8
             }).addTo(map).bindPopup("Occurences : "+location[2]).openPopup();
         });
+    });
+
+     var hospitalsAndStations = {
+       "hospitals" : [ {
+       name: "MIOT International",
+       lat: 13.022457,
+       lng: 80.186112
+     },
+     {
+       name: "The Madras Medical Mission",
+       lat: 13.086208,
+       lng: 80.187406
+     },
+     {
+       name: "Chettinad Health City",
+       lat: 12.794887,
+       lng: 80.216097
+     },
+     {
+       name: "Fortis Malar Hospital",
+       lat: 13.010123,
+       lng: 80.258657
+     },
+     {
+       name: "Tamil Nadu Government Multi Super Specialty Hospital",
+       lat: 13.069155,
+       lng: 80.273723
+     },
+     {
+       name: "Apollo Children's Hospital",
+       lat: 13.060103,
+       lng: 80.25234
+     },
+     {
+       name: "Global Hospital",
+       lat: 12.898338,
+       lng: 80.206295
+     },
+     {
+       name: "Apollo First Med Hospital",
+       lat: 13.077711,
+       lng: 80.245894
+     },
+     {
+       name: "Billroth Hospitals",
+       lat: 13.075818,
+       lng: 80.227342
+     },
+     {
+       name: "Dr.Kamakshi Memorial Hospital",
+       lat: 12.949231,
+       lng: 80.209637
+     },
+{
+       name: "Apollo Hospital",
+       lat: 13.128936,
+       lng: 80.290546
+     },
+{
+       name: "Udhi Eye Hopitals",
+       lat: 13.039156,
+       lng: 80.257101
+     },
+{
+       name: "Sir Ivan Stedeford Hospital",
+       lat: 13.124366,
+       lng: 80.14417
+     }
+     ]
+     };
+
+
+    var hospitalIcon = L.icon({
+      iconUrl: '<%=" #{image_url 'hospital.png'} "%>'
+    });
+    $.each(hospitalsAndStations.hospitals, function(i, data){
+      L.marker([data.lat, data.lng], {icon: hospitalIcon}).addTo(map)
+              .bindPopup(data.name)
+              .openPopup();
     });
 </script>
