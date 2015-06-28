@@ -26,7 +26,7 @@ gem 'spring',        group: :development
 
 gem 'clusterpoint'
 gem 'rest-client', '~> 2.0.0.rc1'
-
+gem 'pry-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

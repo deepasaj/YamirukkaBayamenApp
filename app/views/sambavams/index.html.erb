@@ -1,15 +1,15 @@
 <div id="map"></div>
 
 <script type="text/javascript">
-    var map = L.map('map').setView([13.0827, 80.2707], 11);
-    var colors = {"high": "#f03", "medium": "#FFA500"};
-    var locations = [];
-    var accessToken = 'pk.eyJ1IjoicmFkaGlrYWEiLCJhIjoiZTlmNGRiZjliNWNkNDEzYzcwYTMwZWUyYjY2ZjlhZTAifQ.Gh1l78GFd3zmosk4YNu4cw';
-    var mapId = 'radhikaa.3f07510a';
-    L.tileLayer('https://api.tiles.mapbox.com/v4/'+mapId+'/{z}/{x}/{y}.png?access_token='+accessToken, {
-        attribution: '',
-        center: [13.08, 80.27]
-    }).addTo(map);
+//    var map = L.map('map').setView([13.0827, 80.2707], 11);
+//    var colors = {"high": "#f03", "medium": "#FFA500"};
+//    var locations = [];
+//    var accessToken = 'pk.eyJ1IjoicmFkaGlrYWEiLCJhIjoiZTlmNGRiZjliNWNkNDEzYzcwYTMwZWUyYjY2ZjlhZTAifQ.Gh1l78GFd3zmosk4YNu4cw';
+//    var mapId = 'radhikaa.3f07510a';
+//    L.tileLayer('https://api.tiles.mapbox.com/v4/'+mapId+'/{z}/{x}/{y}.png?access_token='+accessToken, {
+//        attribution: '',
+//        center: [13.08, 80.27]
+//    }).addTo(map);
      var hospitalsAndStations = {
        "hospitals" : [ {
        name: "MIOT International",
@@ -205,46 +205,82 @@
 
 
 
-    var hospitalIcon = L.icon({
-      iconUrl: '<%=" #{image_url 'hospital1.png'} "%>'
-    });
-    var policeIcon = L.icon({
-      iconUrl: '<%=" #{image_url 'police.png'} "%>'
-    });
+//    var hospitalIcon = L.icon({
+//      iconUrl: '<%=" #{image_url 'hospital1.png'} "%>'
+//    });
+//    var policeIcon = L.icon({
+//      iconUrl: '<%=" #{image_url 'police.png'} "%>'
+//    });
+//
+//    $.each(hospitalsAndStations.hospitals, function(i, data){
+//      marker = L.marker([data.lat, data.lng], {icon: hospitalIcon, zIndex: 100}).addTo(map)
+//              .bindPopup(data.name);
+//
+//    });
+//
+//    $.each(hospitalsAndStations.stations, function(i, data){
+//      L.marker([data.lat, data.lng], {icon: policeIcon, zIndex: 100}).addTo(map)
+//              .bindPopup(data.name);
+//
+//    });
+//
+//    $.get('/plot', function(data){
+//      $.each(data["documents"], function(i,location) {
+//        locations[i] = [location["lat"],location["long"],location["occurences"]];
+//      });
+//      $.each(locations, function(i,location) {
+//        var color = "";
+//        if (parseInt(location[2]) < 10) {
+//          color = colors.medium
+//        } else {
+//          color = colors.high
+//        }
+//        L.circle([parseFloat(location[0]), parseFloat(location[1])], 500, {
+//          color: 'red',
+//          fillColor: color,
+//          fillOpacity: 0.8,
+//          zIndex: 100000
+//        }).addTo(map).bindPopup("Occurences : "+location[2]);
+//      });
+//    });
 
-    $.each(hospitalsAndStations.hospitals, function(i, data){
-      marker = L.marker([data.lat, data.lng], {icon: hospitalIcon, zIndex: 100}).addTo(map)
-              .bindPopup(data.name);
-
-    });
-
-    $.each(hospitalsAndStations.stations, function(i, data){
-      L.marker([data.lat, data.lng], {icon: policeIcon, zIndex: 100}).addTo(map)
-              .bindPopup(data.name);
-
-    });
-
-    $.get('/plot', function(data){
-      $.each(data["documents"], function(i,location) {
-        locations[i] = [location["lat"],location["long"],location["occurences"]];
-      });
-      $.each(locations, function(i,location) {
-        var color = "";
-        if (parseInt(location[2]) < 10) {
-          color = colors.medium
-        } else {
-          color = colors.high
-        }
-        L.circle([parseFloat(location[0]), parseFloat(location[1])], 500, {
-          color: 'red',
-          fillColor: color,
-          fillOpacity: 0.8,
-          zIndex: 100000
-        }).addTo(map).bindPopup("Occurences : "+location[2]);
-      });
-    });
+</script>
 
 
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+<script>
+    var map;
+    var directionsService = new google.maps.DirectionsService();
+    var directionsDisplay = new google.maps.DirectionsRenderer();
+    function initialize() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 8,
+            center: {lat: 13.0827, lng: 80.2707}
+        });
+        directionsDisplay.setMap(map);
+        var points = [];
+        $.get('/safe_routes', function(data){
+            $.each(data, function(i, value) {
+                var startPoint = {latitude: value["bounds"][0]["lat"], longitude: value["bounds"][0]["lng"]};
+                var endPoint = {latitude: value["bounds"][1]["lat"], longitude: value["bounds"][1]["lng"]};
+                var startLatLng = new google.maps.LatLng(value["bounds"][0]["lat"], value["bounds"][0]["lng"]);
+                var endLatLng = new google.maps.LatLng(value["bounds"][1]["lat"], value["bounds"][1]["lng"]);
+                calcRoute(startLatLng,endLatLng);
 
-
+            });
+        });
+    }
+    function calcRoute(start,end) {
+        var request = {
+            origin:start,
+            destination:end,
+            travelMode: google.maps.TravelMode.DRIVING
+        };
+        directionsService.route(request, function(response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(response);
+            }
+        });
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
 </script>
