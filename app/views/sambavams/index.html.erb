@@ -95,16 +95,91 @@
        lat: 13.124366,
        lng: 80.14417
      }
-     ]
+     ],
+       "stations" : [{
+         "name": "Royapettah Police Station",
+         "lat" : 13.052088,
+         "lng": 80.263733
+       },
+         {
+           "name": "Keelkattalai police Station",
+           "lat": 12.956121,
+           "lng": 80.185094
+         },
+         {
+           "name": "Adambakkam Police Station",
+           "lat": 12.989389,
+           "lng": 80.201939
+         },
+         {
+           "name": "Manali New Town Police Station",
+           "lat": 13.20649,
+           "lng": 80.276074
+         },
+         {
+           "name": "Neelangarai Police Station",
+           "lat": 12.947568,
+           "lng": 80.254097
+         },
+         {
+           "name": "Ashok Nagar Police Station",
+           "lat": 13.043956,
+           "lng": 80.217204
+         },
+         {
+           "name": "Commissioner of Police",
+           "lat": 13.073857,
+           "lng": 80.263094
+         },
+         {
+           "name": "S13 Chromepet Police Station",
+           "lat": 12.953176,
+           "lng": 80.141335
+         },
+         {
+           "name": "Selaiyur Police Station",
+           "lat": 12.922752,
+           "lng": 80.135151
+         },
+         {
+           "name": "Egmore Police Station",
+           "lat": 13.074916,
+           "lng": 80.257179
+         },
+         {
+           "name": "Pondy Bazzar Police Station",
+           "lat": 13.041356,
+           "lng": 80.234339
+         },
+         {
+           "name": "Puzhal Police Station",
+           "lat": 13.160119,
+           "lng": 80.202794
+         }
+
+
+       ]
      };
 
 
+
     var hospitalIcon = L.icon({
-      iconUrl: '<%=" #{image_url 'hospital.png'} "%>'
+      iconUrl: '<%=" #{image_url 'hospital1.png'} "%>'
     });
+    var policeIcon = L.icon({
+      iconUrl: '<%=" #{image_url 'police.png'} "%>'
+    });
+
     $.each(hospitalsAndStations.hospitals, function(i, data){
       L.marker([data.lat, data.lng], {icon: hospitalIcon}).addTo(map)
-              .bindPopup(data.name)
-              .openPopup();
+              .bindPopup(data.name);
+
     });
+
+    $.each(hospitalsAndStations.stations, function(i, data){
+      L.marker([data.lat, data.lng], {icon: policeIcon}).addTo(map)
+              .bindPopup(data.name);
+
+    });
+
 </script>
