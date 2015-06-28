@@ -10,25 +10,6 @@
         attribution: '',
         center: [13.08, 80.27]
     }).addTo(map);
-    $.get('/plot', function(data){
-        $.each(data["documents"], function(i,location) {
-            locations[i] = [location["lat"],location["long"],location["occurences"]];
-        });
-        $.each(locations, function(i,location) {
-            var color = "";
-            if (parseInt(location[2]) < 10) {
-                color = colors.medium
-            } else {
-                color = colors.high
-            }
-            L.circle([parseFloat(location[0]), parseFloat(location[1])], 500, {
-                color: 'red',
-                fillColor: color,
-                fillOpacity: 0.8
-            }).addTo(map).bindPopup("Occurences : "+location[2]).openPopup();
-        });
-    });
-
      var hospitalsAndStations = {
        "hospitals" : [ {
        name: "MIOT International",
@@ -90,17 +71,38 @@
        lat: 13.039156,
        lng: 80.257101
      },
-{
-       name: "Sir Ivan Stedeford Hospital",
-       lat: 13.124366,
-       lng: 80.14417
-     }
-     ],
-       "stations" : [{
-         "name": "Royapettah Police Station",
-         "lat" : 13.052088,
-         "lng": 80.263733
-       },
+         {
+           name: "Sir Ivan Stedeford Hospital",
+           lat: 13.124366,
+           lng: 80.14417
+         },
+         {"lat": 12.963143, "lng": 80.24581, "name": "Apollo Speciality Hospital"},
+         {"lat": 13.008425, "lng": 80.248424, "name": "Cancer Institute"},
+         {"lat": 13.115958, "lng": 80.232875, "name": "Abhijay Hospital"},
+         {"lat": 13.038977, "lng": 80.261816, "name": "St.Isabels Hospital"},
+         {"lat": 13.057335, "lng": 80.245786, "name": "Kanchi Kamakoti Childs Trust Hospital"},
+         {"lat": 13.055974, "lng": 80.247748, "name": "GG Hospital"},
+         {"lat": 12.976815, "lng": 80.21157, "name": "Velachery KS Hospital"},
+         {"lat": 13.051878, "lng": 80.245589, "name": "B.R.S Hospital"},
+         {"lat": 13.105854, "lng": 80.285441, "name": "Stanley Hospital"},
+         {"lat": 12.995337, "lng": 80.269136, "name": "Santhosh Hospitals"},
+         {"lat": 13.033595, "lng": 80.245072, "name": "Apollo Hospitals"},
+         {"lat": 13.054699, "lng": 80.265062, "name": "Royapettah General Hospital"},
+         {"lat": 13.043183, "lng": 80.272436, "name": "C.S.I. Kalyani Multispeciality Hospital"},
+         {"lat": 13.082097, "lng": 80.253279, "name": "Noble Hospital"},
+         {"lat": 13.067125, "lng": 80.250532, "name": "Sankara Nethralaya"},
+         {"lat": 13.057613, "lng": 80.12815, "name": "ACS Medical College and Hospital"},
+         {"lat": 13.063227, "lng": 80.251466, "name": "Apollo Hospitals"},
+         {"lat": 13.041539, "lng": 80.244526, "name": "Shanta Ayurveda Hospital"},
+         {"lat": 13.064371, "lng": 80.24985, "name": "Jagadguru Kanchi Sri Chandrasekarendra Saraswathi Nethra Nilayam"},
+         {"lat": 13.036622, "lng": 80.153171, "name": "Venkateswara Homoeopathic Medical College and Hospital"}
+       ],
+       "stations" : [
+         {
+           "name": "Royapettah Police Station",
+           "lat": 13.052088,
+           "lng": 80.263733
+         },
          {
            "name": "Keelkattalai police Station",
            "lat": 12.956121,
@@ -155,7 +157,47 @@
            "name": "Puzhal Police Station",
            "lat": 13.160119,
            "lng": 80.202794
-         }
+         },
+         {"lat": 13.074922, "lng": 80.27231, "name": "F1 Chintadripet Police Station And Office of The Assistant Commissioner of Police - Law and Order"},
+         {"lat": 13.05265, "lng": 80.273945, "name": "Ice House Police Station"},
+         {"lat": 13.078347, "lng": 80.262055, "name": "Egmore Police Station"},
+         {"lat": 13.05967, "lng": 80.242835, "name": "Nungambakkam Police Station"},
+         {"lat": 12.905157, "lng": 80.095634, "name": "Perungalathur Police Station"},
+         {"lat": 13.049611, "lng": 80.211693, "name": "R-8 Vadapalani Police Station"},
+         {"lat": 13.004746, "lng": 80.261269, "name": "KravMaga Chennai TamilNadu"},
+         {"lat": 13.068454, "lng": 80.213606, "name": "K8 Police Station"},
+         {"lat": 13.107436, "lng": 80.186841, "name": "Korattur Police Station"},
+         {"lat": 13.085702, "lng": 80.262735, "name": "Dy Commissioner Office, Kilpauk"},
+         {"lat": 13.016089, "lng": 80.189403, "name": "S4-Nandambakkam Police Station"},
+         {"lat": 13.103708, "lng": 80.206139, "name": "Villivakkam Police Station"},
+         {"lat": 13.062328, "lng": 80.227583, "name": "Choolaimedu Police Station"},
+         {"lat": 13.088419, "lng": 80.28168, "name": "Pookadai Police Station"},
+         {"lat": 13.087742, "lng": 80.18789, "name": "V.3 J.J. Nagar Police Booth"},
+         {"lat": 12.891658, "lng": 80.068567, "name": "Otteri Police Station"},
+         {"lat": 13.080979, "lng": 80.26332, "name": "Office of Commissioner of Police"},
+         {"lat": 12.937285, "lng": 80.138032, "name": "S 12 Chitlapakkam Police station"},
+         {"lat": 13.033287, "lng": 80.255991, "name": "E4 Abhiramapuram Police Station"},
+         {"lat": 13.061043, "lng": 80.262208, "name": "Mount Road Police Station"},
+         {"lat": 13.093121, "lng": 80.197602, "name": "Thirumangalam Police Station"},
+         {"lat": 13.110173, "lng": 80.213704, "name": "V6 Kolathur Police Station"},
+         {"lat": 12.981752, "lng": 80.191714, "name": "S9 Palavanthangal Police Station"},
+         {"lat": 13.031081, "lng": 80.201759, "name": "MGR Nagar Police Station"},
+         {"lat": 13.068578, "lng": 80.035636, "name": "Vellavedu"},
+         {"lat": 12.927607, "lng": 80.099705, "name": "CTO Colony Police Booth"},
+         {"lat": 13.140314, "lng": 79.894037, "name": "Superintendent of police"},
+         {"lat": 13.04953, "lng": 80.199224, "name": "R5 Virugambakkam Police Station"},
+         {"lat": 13.041651, "lng": 80.205366, "name": "KK Nagar Police Station"},
+         {"lat": 12.984502, "lng": 80.26099, "name": "Thiruvanmiyur Police Station"},
+         {"lat": 13.098964, "lng": 80.232177, "name": "Ayanavaram Police Station"},
+         {"lat": 13.035708, "lng": 80.269923, "name": "Mylapore Police Station"},
+         {"lat": 13.028262, "lng": 80.216504, "name": "R6 - Kumaran Nagar, Police Station"},
+         {"lat": 13.017333, "lng": 80.241195, "name": "Kotturpuram Police Station"},
+         {"lat": 12.969682, "lng": 80.126056, "name": "Pammal Police Station"},
+         {"lat": 13.022458, "lng": 80.226052, "name": "J1 - Police Station, Saidapet"},
+         {"lat": 13.088354, "lng": 80.282385, "name": "C1 Flower Bazaar Police Booth"},
+         {"lat": 12.967895, "lng": 80.149077, "name": "Pallavaram Police Station"},
+         {"lat": 13.217533, "lng": 80.320007, "name": "Magaleer Police Station"},
+         {"lat": 13.436051, "lng": 79.955711, "name": "Police station"}
 
 
        ]
@@ -171,15 +213,38 @@
     });
 
     $.each(hospitalsAndStations.hospitals, function(i, data){
-      L.marker([data.lat, data.lng], {icon: hospitalIcon}).addTo(map)
+      marker = L.marker([data.lat, data.lng], {icon: hospitalIcon, zIndex: 100}).addTo(map)
               .bindPopup(data.name);
 
     });
 
     $.each(hospitalsAndStations.stations, function(i, data){
-      L.marker([data.lat, data.lng], {icon: policeIcon}).addTo(map)
+      L.marker([data.lat, data.lng], {icon: policeIcon, zIndex: 100}).addTo(map)
               .bindPopup(data.name);
 
     });
+
+    $.get('/plot', function(data){
+      $.each(data["documents"], function(i,location) {
+        locations[i] = [location["lat"],location["long"],location["occurences"]];
+      });
+      $.each(locations, function(i,location) {
+        var color = "";
+        if (parseInt(location[2]) < 10) {
+          color = colors.medium
+        } else {
+          color = colors.high
+        }
+        L.circle([parseFloat(location[0]), parseFloat(location[1])], 500, {
+          color: 'red',
+          fillColor: color,
+          fillOpacity: 0.8,
+          zIndex: 100000
+        }).addTo(map).bindPopup("Occurences : "+location[2]);
+      });
+    });
+
+
+
 
 </script>

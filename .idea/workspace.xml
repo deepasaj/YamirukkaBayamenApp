@@ -6,7 +6,10 @@
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/tmp/" />
     <ignored path=".idea/dataSources.local.xml" />
-    <file path="/index.html.erb" changelist="fcf5a41c-8397-4071-9638-2e8d813b5d4a" time="1435438750089" ignored="false" />
+    <file path="/index.html.erb" changelist="fcf5a41c-8397-4071-9638-2e8d813b5d4a" time="1435469128776" ignored="false" />
+    <file path="/application.html.erb" changelist="fcf5a41c-8397-4071-9638-2e8d813b5d4a" time="1435469251875" ignored="false" />
+    <file path="$PROJECT_DIR$/log/development.log" changelist="fcf5a41c-8397-4071-9638-2e8d813b5d4a" time="1435469347586" ignored="false" />
+    <file path="/leaflet.js" changelist="fcf5a41c-8397-4071-9638-2e8d813b5d4a" time="1435469479879" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,11 +47,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/sambavams/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="179" column="54" selection-start="4630" selection-end="4630" vertical-scroll-proportion="-21.0">
+            <state line="242" column="60" selection-start="9816" selection-end="9816" vertical-scroll-proportion="0.74013156">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="17" selection-start="366" selection-end="366" vertical-scroll-proportion="-5.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="leaflet.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/leaflet.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="918" column="50" selection-start="61923" selection-end="61965" vertical-scroll-proportion="553.8">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -60,7 +83,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="police.png" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="police.png" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/images/police.png">
           <provider selected="true" editor-type-id="images">
             <state />
@@ -103,6 +126,8 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
+        <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/leaflet.js" />
         <option value="$PROJECT_DIR$/app/views/sambavams/index.html.erb" />
       </list>
     </option>
@@ -780,11 +805,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/application.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -811,11 +831,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/location.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
@@ -848,13 +863,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/sambavams/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="179" column="54" selection-start="4630" selection-end="4630" vertical-scroll-proportion="-21.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/images/hospital.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -868,6 +876,29 @@
     <entry file="file://$PROJECT_DIR$/app/assets/images/police.png">
       <provider selected="true" editor-type-id="images">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="17" selection-start="366" selection-end="366" vertical-scroll-proportion="-5.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/leaflet.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="918" column="50" selection-start="61923" selection-end="61965" vertical-scroll-proportion="553.8">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/sambavams/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="242" column="60" selection-start="9816" selection-end="9816" vertical-scroll-proportion="0.74013156">
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>
